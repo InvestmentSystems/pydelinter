@@ -2,18 +2,95 @@
 pydelinter
 ==========
 
+Pydelinter automatically generates unified-diffs of python source code that violate certain class of Pylint warnings.  You can run this tool on your souce code, inspect the diffs and apply the diffs as patches.
 
-Add a short description here!
+Installation
+=============
 
-
-Description
-===========
-
-A longer description of your project goes here...
+pip install pydelinter
 
 
-Note
-====
+Usage
+======
+
+$ delint -h
+usage: delint [-h] [--msg_id MSG_ID] [--version] [-v] [-vv]
+              file_path_or_folder
+
+Command line tool for delinting certain pylint messages
+
+positional arguments:
+  file_path_or_folder  Path to a .py file or folder contain *.py files. This
+                       relative path will be used to generate the unified diff
+                       files.
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --msg_id MSG_ID      The pylint message that will be delinterd. Eg W0611
+  --version            show program's version number and exit
+  -v, --verbose        set loglevel to INFO
+  -vv, --very-verbose  set loglevel to DEBUG
+
+Examples:
+
+            Running the below examples will generate an unified-diff file that can be used as a patch to apply the changes to git or Mercurial.
+            delinter/main.py --msg W0611 foo/core.py
+
+            To process multiple python files, provide a folder
+            delinter/main.py --msg W0611 foo/
+
+            Running, this command on the test file available with this repository:
+            delinter/main.py --msg W0611 delinter/test/input
+
+            --- a/delinter/test/input/test_unused_imports.py
+            +++ b/delinter/test/input/test_unused_imports.py
+            @@ -1,12 +1,7 @@
+            -import unitest.mock.patch, unittest.mock.patch as p1
+             import unitest.mock.patch, unittest.mock.patch as p2
+            -import unittest as t, unittest as t2
+            +import unittest as t2
+             import unitest.mock.patch as p
+            -import os
+            -import pandas as pd, numpy as np
+            -from collections.abc import defaultdict, OrderedDict
+            -from itertools import filterfalse as _filterfalse
+            -from collections.abc import x, y
+            +from collections.abc import y
+             from collections import *
+
+             p2.mock() # use p2
+
+
+Status of pylint messages supported
+===========================================
+
++----------+---------+------------+
+| Message Id |  Message | Status  |
++----------+---------+------------+
+| W0611 | unused-imports | :heavy_check_mark: |
+| W0404 | reimported | |
++----------+---------+------------+
+
+
+
+What this tool will not support (to keep things simple)
+===========================================================
+
+1. The tool will only support addressing one pytlint warning/error at a time.
+2. Any warnings that might need complex formatting will not be supported. We leave that to more sophisticated tools like ```black```.
+
+Caveats
+=========
+
+1. When dropping statements, preceeding newlines/comments attached to the statement will be removed.
+2. Given how pylint reports warnings, the tool might have to be run on the same code base more than once, after applying the previous patch. For example, an (reimported) error on a particular statement, precededs an (unused-import) error. Therefore, re-running the program will force this statement to be tagged by pylint as an unused-import.
+
+
+Acknowledgements
+====================
 
 This project has been set up using PyScaffold 3.2.3. For details and usage
 information on PyScaffold see https://pyscaffold.org/.
+
+
+This library primarily depends upon the LibCST [https://github.com/Instagram/LibCST] library.
