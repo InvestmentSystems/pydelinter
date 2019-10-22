@@ -71,7 +71,7 @@ Examples:
 | W0404 | reimported | |
 |.|.|.|
 
-(more items will be added to this list after carefully review all message groups supported by Pylint)
+(more items will be added to this list after carefully reviewing all message groups supported by Pylint)
 
 ## Objectives of this tool
 
