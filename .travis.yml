@@ -9,9 +9,9 @@ virtualenv:
 matrix:
   fast_finish: true
   include:
-    - python: 3.6
-      env: DISTRIB="ubuntu" TOX_PYTHON_VERSION="py36" COVERAGE="true"
-    - env: DISTRIB="conda" PYTHON_VERSION="3.6" COVERAGE="false"
+    - python: 3.7
+      env: DISTRIB="ubuntu" TOX_PYTHON_VERSION="py37" COVERAGE="true"
+    - env: DISTRIB="conda" PYTHON_VERSION="3.7" COVERAGE="false"
 install:
   - source tests/travis_install.sh
   - pip install -r requirements.txt
@@ -19,8 +19,8 @@ install:
   # The automatic creation of a `requirements.txt` file is deprecated.
   # See `Dependency Management` in the docs for other options.
 before_script:
-  - git config --global user.email "you@example.com"
-  - git config --global user.name "Your Name"
+  - git config --global user.email 'grdvnl@gmail.com'
+  - git config --global user.name "gdevanla"
 script:
   - python setup.py develop
   - tox

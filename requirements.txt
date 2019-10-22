@@ -1,17 +1,30 @@
-# =============================================================================
-# DEPRECATION WARNING:
-#
-# The file `requirements.txt` does not influence the package dependencies and
-# will not be automatically created in the next version of PyScaffold (v4.x).
-#
-# Please have look at the docs for better alternatives
-# (`Dependency Management` section).
-# =============================================================================
-#
-# Add your pinned requirements so that they can be easily installed with:
-# pip install -r requirements.txt
-# Remember to also add them in setup.cfg but unpinned.
-# Example:
-# numpy==1.13.3
-# scipy==1.0
-#
+astroid==2.3.1
+backcall==0.1.0
+decorator==4.4.0
+ipdb==0.12.2
+ipython==7.8.0
+ipython-genutils==0.2.0
+isort==4.3.21
+jedi==0.15.1
+lazy-object-proxy==1.4.2
+-e git+https://github.com/Instagram/LibCST.git@e533e6ae73a944f0464b31bc4ff488c572a9229e#egg=libcst
+mccabe==0.6.1
+mypy-extensions==0.4.2
+numpy==1.17.2
+pandas==0.25.1
+parso==0.5.1
+pexpect==4.7.0
+pickleshare==0.7.5
+prompt-toolkit==2.0.10
+ptyprocess==0.6.0
+Pygments==2.4.2
+pylint==2.4.2
+python-dateutil==2.8.0
+pytz==2019.3
+six==1.12.0
+traitlets==4.3.3
+typed-ast==1.4.0
+typing-extensions==3.7.4
+typing-inspect==0.4.0
+wcwidth==0.1.7
+wrapt==1.11.2
