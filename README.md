@@ -1,7 +1,6 @@
 # pydelinter
 
-
-Pydelinter automatically generates unified-diffs of python source code that violate certain class of Pylint warnings.  You can run this tool on your souce code, inspect the diffs and apply the diffs as patches.
+Pydelinter automatically generates unified-diffs of python source code that violate certain class of Pylint warnings.  You can run this tool on your source code, inspect the diffs and apply the diffs as patches.
 
 ## Installation
 
@@ -70,20 +69,20 @@ Examples:
 |------------|:--------:|:-------:|
 | W0611 | unused-imports | :heavy_check_mark: |
 | W0404 | reimported | |
+|.|.|.|
 
+(more items will be added to this list after carefully review all message groups supported by Pylint)
 
-## What this tool will not support (to keep things simple)
+## Objectives of this tool
 
-
-1. The tool will only support addressing one pytlint warning/error at a time.
-2. Any warnings that might need complex formatting will not be supported. We leave that to more sophisticated tools like ```black```.
+1. The tool will only support addressing one pytlint warning/error at a time. This is provided through the `msg_id` argument.
+2. Any warnings that might need complex formatting will not be supported. We leave that to more sophisticated tools like ```Black```.
 
 ## Caveats
 
-
 1. When dropping statements, preceeding newlines/comments attached to the statement will be removed.
 2. Given how pylint reports warnings, the tool might have to be run on the same code base more than once, after applying the previous patch. For example, an (reimported) error on a particular statement, precededs an (unused-import) error. Therefore, re-running the program will force this statement to be tagged by pylint as an unused-import.
-
+3. The diffs produces by this tool is only as good as how pylint reports warning/errors and howthe LibCST yields the CST. Therefore, manual review of the patches is always a good idea (along with a good test suite).
 
 ## Acknowledgements
 
