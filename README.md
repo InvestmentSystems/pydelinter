@@ -1,17 +1,16 @@
-==========
-pydelinter
-==========
+# pydelinter
+
 
 Pydelinter automatically generates unified-diffs of python source code that violate certain class of Pylint warnings.  You can run this tool on your souce code, inspect the diffs and apply the diffs as patches.
 
-Installation
-=============
+## Installation
 
 pip install pydelinter
 
 
-Usage
-======
+## Usage
+
+``` shell
 
 $ delint -h
 usage: delint [-h] [--msg_id MSG_ID] [--version] [-v] [-vv]
@@ -61,33 +60,32 @@ Examples:
              p2.mock() # use p2
 
 
-Status of pylint messages supported
-===========================================
+```
 
-+----------+---------+------------+
+
+## Status of pylint messages supported
+
+
 | Message Id |  Message | Status  |
-+----------+---------+------------+
+|------------|:--------:|:-------:|
 | W0611 | unused-imports | :heavy_check_mark: |
 | W0404 | reimported | |
-+----------+---------+------------+
 
 
+## What this tool will not support (to keep things simple)
 
-What this tool will not support (to keep things simple)
-===========================================================
 
 1. The tool will only support addressing one pytlint warning/error at a time.
 2. Any warnings that might need complex formatting will not be supported. We leave that to more sophisticated tools like ```black```.
 
-Caveats
-=========
+## Caveats
+
 
 1. When dropping statements, preceeding newlines/comments attached to the statement will be removed.
 2. Given how pylint reports warnings, the tool might have to be run on the same code base more than once, after applying the previous patch. For example, an (reimported) error on a particular statement, precededs an (unused-import) error. Therefore, re-running the program will force this statement to be tagged by pylint as an unused-import.
 
 
-Acknowledgements
-====================
+## Acknowledgements
 
 This project has been set up using PyScaffold 3.2.3. For details and usage
 information on PyScaffold see https://pyscaffold.org/.
