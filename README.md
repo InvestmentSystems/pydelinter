@@ -72,7 +72,25 @@ Examples:
 |------------|:--------:|:-------:|
 | W0611 | unused-imports | :heavy_check_mark: |
 | W0404 | reimported | |
-|.|.|.|
+|W0108|unnecessary-lambda||
+|W0107|unnecessary-pass||
+|E1111|assignment-from-no-return||
+|E0701|bad-except-order||
+|E0711|not-implemented-raised||
+|C0411|wrong-import-order||
+|C0412|ungrouped-imports||
+|C0410|multiple-imports||
+|W0611|unused-variable||
+|W0613|unused-argument||
+|W0612|unused-wildcard-import||
+|W0602|global-variable-not-assigned||
+|R0102|simplifiable-if-statement||
+|C0326|bad-whitespace||
+|C0304|missing-final-newline||
+|C0327|multiple-statements||
+|C0305|trailing-newline||
+|C0303|trailing-whitespace||
+|C0325|superfluous-parens||
 
 (more items will be added to this list after carefully reviewing all message groups supported by Pylint)
 
