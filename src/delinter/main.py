@@ -158,10 +158,14 @@ def _run_delinter(options):
     Run the delinter and produce the diff.
     '''
     root_file_path = options.file_path_or_folder
+    # TODO: Handle Windows paths
     if Path(root_file_path).is_absolute():
         msg_template = r'{abspath}:{line}:[{msg_id}({symbol}),{obj}]{msg}'
+        sep = ''
     else:
         msg_template = r'{path}:{line}:[{msg_id}({symbol}),{obj}]{msg}'
+        sep = '/'
+
     pylint_command = f"{root_file_path} --enable=W --disable=C,R,E,F --msg-template={msg_template} --score=n"
 
     out, _ = lint.py_run(pylint_command, return_std=True)
@@ -184,8 +188,8 @@ def _run_delinter(options):
             local_warnings = [p for p in parsed_warnings if p.file_path == str(file_path)]
             fixed_module = wrapper.visit(
                     SUPPORTED_LINTER_MAP[options.msg_id][1](local_warnings))
-            a_file_path = 'a/' + str(file_path)
-            b_file_path = 'b/' + str(file_path)
+            a_file_path = f'a{sep}{file_path}'
+            b_file_path = f'b{sep}{file_path}'
             result = "".join(difflib.unified_diff(
                     source_code.splitlines(1),
                     fixed_module.code.splitlines(1),
