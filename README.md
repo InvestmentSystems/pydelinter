@@ -1,3 +1,6 @@
+![](https://travis-ci.org/gdevanla/pydelinter.svg?branch=master)
+![PyPI version](https://badge.fury.io/py/pydelinter.svg)
+
 # pydelinter
 
 Pydelinter automatically generates unified-diffs of python source code that violate certain class of Pylint warnings.  You can run this tool on your source code, inspect the diffs and apply the diffs as patches.
