@@ -1,7 +1,7 @@
 import unittest
 
 import libcst as cst
-import delinter.unused_imports as unused_imports
+import delinter.imports as imports
 from delinter.main import Delinter
 
 unused_import_warnings = '''
@@ -23,14 +23,14 @@ class TestUnusedImports(unittest.TestCase):
         parsed_warnings = Delinter.parse_linter_warnings(warnings, 'W0611')
 
         expected_warnings = [
-                unused_imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=1, alias=None, dotted_as_name='unitest.mock.patch'),
-                unused_imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=1, alias='p1', dotted_as_name='unittest.mock.patch'),
-                unused_imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=5, alias=None, dotted_as_name='os'),
-                unused_imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=6, alias='pd', dotted_as_name='pandas'),
-                unused_imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=6, alias='np', dotted_as_name='numpy'),
-                unused_imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=7, import_as_name='defaultdict', dotted_as_name='collections.abc', alias=None),
-                unused_imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=7, import_as_name='OrderedDict', dotted_as_name='collections.abc', alias=None),
-                unused_imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=8, import_as_name='filterfalse', dotted_as_name='itertools', alias='_filterfalse')]
+                imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=1, alias=None, dotted_as_name='unitest.mock.patch'),
+                imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=1, alias='p1', dotted_as_name='unittest.mock.patch'),
+                imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=5, alias=None, dotted_as_name='os'),
+                imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=6, alias='pd', dotted_as_name='pandas'),
+                imports.UnusedImportsWarning(file_path='test_unused_imports.py', line_no=6, alias='np', dotted_as_name='numpy'),
+                imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=7, import_as_name='defaultdict', dotted_as_name='collections.abc', alias=None),
+                imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=7, import_as_name='OrderedDict', dotted_as_name='collections.abc', alias=None),
+                imports.UnusedFromImportsWarning(file_path='test_unused_imports.py', line_no=8, import_as_name='filterfalse', dotted_as_name='itertools', alias='_filterfalse')]
         self.assertEqual(parsed_warnings, expected_warnings)
 
 if __name__ == '__main__':

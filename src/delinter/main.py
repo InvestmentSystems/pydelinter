@@ -34,10 +34,10 @@ import libcst as cst
 from pylint import epylint as lint
 
 from delinter import __version__
-from delinter.unused_imports import UnusedImportsDelinter
-from delinter.unused_imports import RemoveUnusedImportTransformer
-from delinter.unused_imports import ReimportDelinter
-from delinter.unused_imports import ReimportTransformer
+from delinter.imports import UnusedImportsDelinter
+from delinter.imports import RemoveUnusedImportTransformer
+from delinter.imports import ReimportDelinter
+from delinter.imports import ReimportTransformer
 
 
 __author__ = "grdvnl"
