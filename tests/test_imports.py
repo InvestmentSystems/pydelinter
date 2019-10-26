@@ -5,8 +5,8 @@ import libcst as cst
 import delinter.imports as imports
 from delinter.main import Delinter
 
-from tests.fixtures import unused_imports
-from tests.fixtures import reimports
+from fixtures import unused_imports
+from fixtures import reimports
 
 class BaseTest(unittest.TestCase):
 
