@@ -71,7 +71,7 @@ Examples:
 | Message Id |  Message | Status  |
 |------------|:--------:|:-------:|
 | W0611 | unused-imports | :heavy_check_mark: |
-| W0404 | reimported | |
+| W0404 | reimported |:heavy_check_mark:  |
 |W0108|unnecessary-lambda||
 |W0107|unnecessary-pass||
 |E1111|assignment-from-no-return||
