@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gdevanla/pydelinter.svg?branch=master)](https://travis-ci.org/gdevanla/pydelinter)
+[![Build Status](https://travis-ci.org/InvestmentSystems/pydelinter.svg?branch=master)](https://travis-ci.org/InvestmentSystems/pydelinter)
 ![PyPI version](https://badge.fury.io/py/pydelinter.svg)
 
 # pydelinter
