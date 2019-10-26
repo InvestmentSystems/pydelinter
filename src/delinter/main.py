@@ -36,6 +36,9 @@ from pylint import epylint as lint
 from delinter import __version__
 from delinter.unused_imports import UnusedImportsDelinter
 from delinter.unused_imports import RemoveUnusedImportTransformer
+from delinter.unused_imports import ReimportDelinter
+from delinter.unused_imports import ReimportTransformer
+
 
 __author__ = "grdvnl"
 __copyright__ = "grdvnl"
@@ -45,7 +48,8 @@ _logger = logging.getLogger(__name__)
 
 
 SUPPORTED_LINTER_MAP = {
-        UnusedImportsDelinter.CODE: (UnusedImportsDelinter, RemoveUnusedImportTransformer)
+        UnusedImportsDelinter.CODE: (UnusedImportsDelinter, RemoveUnusedImportTransformer),
+        ReimportDelinter.CODE: (ReimportDelinter, ReimportTransformer)
         }
 
 pylint_str = str # output formatted string of Pylint output
