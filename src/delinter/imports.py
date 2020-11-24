@@ -163,7 +163,8 @@ class UnusedImportsDelinter(BaseDelinter):
 
 
 class RemoveUnusedImportTransformer(cst.CSTTransformer):
-    METADATA_DEPENDENCIES = (cst.metadata.SyntacticPositionProvider, cst.metadata.BasicPositionProvider)
+
+    METADATA_DEPENDENCIES = (cst.metadata.PositionProvider,)
 
     def __init__(self, warnings: tp.Union[UnusedImportsWarning, UnusedFromImportsWarning]):
         self.warnings = warnings
@@ -209,7 +210,7 @@ class RemoveUnusedImportTransformer(cst.CSTTransformer):
         self, original_node: cst.Import, updated_node: cst.Import
     ) -> cst.Import:
 
-        code = self.get_metadata(cst.metadata.SyntacticPositionProvider, original_node)
+        code = self.get_metadata(cst.metadata.PositionProvider, original_node)
         new_import_alias = []
         line_no = code.start.line
         for import_alias in updated_node.names:
@@ -229,7 +230,7 @@ class RemoveUnusedImportTransformer(cst.CSTTransformer):
         self, original_node: cst.ImportFrom, updated_node: cst.ImportFrom
     ) -> cst.ImportFrom:
         #import ipdb; ipdb.set_trace()
-        code = self.get_metadata(cst.metadata.SyntacticPositionProvider, original_node)
+        code = self.get_metadata(cst.metadata.PositionProvider, original_node)
         line_no = code.start.line
         new_import_alias = []
         if isinstance(updated_node.names, cst.ImportStar):
@@ -251,7 +252,7 @@ class RemoveUnusedImportTransformer(cst.CSTTransformer):
 
 
 class ReimportTransformer(cst.CSTTransformer):
-    METADATA_DEPENDENCIES = (cst.metadata.SyntacticPositionProvider, cst.metadata.BasicPositionProvider)
+    METADATA_DEPENDENCIES = (cst.metadata.PositionProvider,)
 
     def __init__(self, warnings: tp.Union[UnusedImportsWarning, UnusedFromImportsWarning]):
         self.warnings = warnings
@@ -300,7 +301,7 @@ class ReimportTransformer(cst.CSTTransformer):
         self, original_node: cst.Import, updated_node: cst.Import
     ) -> cst.Import:
 
-        code = self.get_metadata(cst.metadata.SyntacticPositionProvider, original_node)
+        code = self.get_metadata(cst.metadata.PositionProvider, original_node)
         new_import_alias = []
         line_no = code.start.line
         for import_alias in updated_node.names:
@@ -319,7 +320,7 @@ class ReimportTransformer(cst.CSTTransformer):
     def leave_ImportFrom(
         self, original_node: cst.ImportFrom, updated_node: cst.ImportFrom
     ) -> cst.ImportFrom:
-        code = self.get_metadata(cst.metadata.SyntacticPositionProvider, original_node)
+        code = self.get_metadata(cst.metadata.PositionProvider, original_node)
         line_no = code.start.line
         new_import_alias = []
         if isinstance(updated_node.names, cst.ImportStar):
